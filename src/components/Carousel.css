@@ -1,0 +1,13 @@
+.carousel {
+    display: flex;
+    
+    width: 200px;
+    overflow: hidden;
+}
+
+.carousel > * {
+    position: relative;
+    left: 0px;
+
+    margin: 0px;
+}

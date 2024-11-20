@@ -1,0 +1,8 @@
+.labeled-text {
+    display: flex;
+    align-items: center;
+}
+
+.labeled-text > * {
+    margin: 0px;
+}
