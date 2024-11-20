@@ -11,6 +11,10 @@ body {
     margin: 10px;
 }
 
+strong {
+    font-family: 'Lexend';
+}
+
 #root {
     height: 100%;
 }

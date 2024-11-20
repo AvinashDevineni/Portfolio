@@ -1,5 +1,6 @@
 import Carousel from "./components/Carousel";
 import LabeledText from "./components/LabeledText";
+import Project from './components/Project';
 
 import GmailLogo from './public/links-logos/gmail.png';
 import GithubLightLogo from './public/links-logos/github-light.png';
@@ -19,12 +20,19 @@ import SpringLogo from './public/skill-logos/spring.png';
 import GitLogo from './public/skill-logos/git.png';
 import AwsLogo from './public/skill-logos/aws.png';
 
+import ChessSiteImage from './public/project-imgs/chesssite.png';
+
 import './App.css';
 
 export default function App() {
 	const linksImgSize = 22;
+
 	const skillsImgSize = 25;
+
 	const carouselLabeledTextGap = 7;
+
+	const projectImgWidth = 300;
+	const projectImgHeight = 140;
 
 	return (
 		<>
@@ -32,7 +40,7 @@ export default function App() {
 				<div className='card' id='about'>
 					<h1>About</h1>
 					<h2 style={{marginTop: '10px'}}>Hi, I'm Avinash</h2>
-					<h3>16 y/o <strong style={{fontFamily: 'Lexend'}}>Full-Stack</strong> Developer</h3>
+					<h3>16 y/o <strong>Full-Stack</strong> Developer</h3>
 					<p>Bentonville, Arkansas</p>
 
 					<div id='links' style={{marginTop: '5px'}}>
@@ -139,9 +147,28 @@ export default function App() {
 				
 				<div className='card' id='projects'>
 					<h1>Projects</h1>
-					<p>Project ABC</p>
-					<p>Project DEF</p>
-					<p>Project XYZ</p>
+					<div id='projects-list' style={{marginTop: '10px'}}>
+						<a href="https://avinashdevineni.github.io/Chess-Site"
+						 target="_blank" style={{width: `${projectImgWidth}px`}}>
+							<Project name='Epic Chess Engine'
+							 descriptionBullets={[
+								<p><strong>React</strong> frontend</p>,
+								<p>API built w/ <strong>Spring</strong></p>,
+								<p><strong>Note:</strong> API takes a while to load</p>
+							 ]} imgSrc={ChessSiteImage} imgWidth={projectImgWidth}
+							 imgHeight={projectImgHeight} imgScale={1.2}
+							 skills={{
+								skillImgs: [ReactLogo, SpringLogo],
+								skillImgsSize: 25
+							 }}/>
+						</a>
+						
+						<Project name='Epic Chess Engine'
+						descriptionBullets={[
+							'', '', ''
+						]} imgSrc={ChessSiteImage} imgWidth={projectImgWidth}
+						imgHeight={projectImgHeight}/>
+					</div>
 				</div>
 
 				<div className='card' id='XYZ'>
