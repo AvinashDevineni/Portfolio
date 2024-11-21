@@ -7,8 +7,8 @@ interface ProjectProps {
     descriptionBullets: ReactNode[];
 
     imgSrc: string;
-    imgWidth: number;
-    imgHeight: number;
+    imgWidth: string;
+    imgHeight: string;
     imgScale?: number;
 
     skills?: ProjectSkillsProps;

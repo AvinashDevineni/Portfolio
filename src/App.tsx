@@ -31,8 +31,8 @@ export default function App() {
 
 	const carouselLabeledTextGap = 7;
 
-	const projectImgWidth = 300;
-	const projectImgHeight = 140;
+	const projectImgWidth = '300px';
+	const projectImgHeight = '140px';
 
 	return (
 		<>
@@ -101,7 +101,7 @@ export default function App() {
 						fontSize: '20px', border: 'black 2px solid',
 						borderRadius: '10px', padding: '5px 0px',
 					 }}
-					 childGap={20} pixelsMove={1} moveDelayMs={20}
+					 childGap={20} pixelsMove={1} moveDelayMs={10}
 					 carouselItems={[
 						<LabeledText text="NodeJS" gap={carouselLabeledTextGap}
 						 labelAttributes={{
@@ -125,7 +125,7 @@ export default function App() {
 						fontSize: '20px', border: 'black 2px solid',
 						borderRadius: '10px', padding: '5px 0px',
 					 }}
-					 childGap={20} pixelsMove={1} moveDelayMs={10}
+					 childGap={20} pixelsMove={1} moveDelayMs={15}
 					 carouselItems={[
 						<LabeledText text="Git" gap={carouselLabeledTextGap}
 						 labelAttributes={{
@@ -197,7 +197,7 @@ export default function App() {
 							<p><strong>Silver division</strong> (top 30%)</p>
 							<ul>
 								<li>
-									Learned and implemented &#9;
+									Learned and utilized &#9;
 									<strong>data structures</strong> (queue, stack, map, etc.)
 									and <strong>algorithms</strong> &#9; (DFS, two pointer, etc.)
 								</li>
