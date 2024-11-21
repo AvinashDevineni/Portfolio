@@ -39,3 +39,14 @@
     flex-direction: column;
     gap: 10px;
 }
+
+#awards {
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+#awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

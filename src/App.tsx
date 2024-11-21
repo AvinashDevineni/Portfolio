@@ -39,11 +39,11 @@ export default function App() {
 			<div id='dashboard'>
 				<div className='card' id='about'>
 					<h1>About</h1>
-					<h2 style={{marginTop: '10px'}}>Hi, I'm Avinash</h2>
+					<h2>Hi, I'm Avinash Devineni</h2>
 					<h3>16 y/o <strong>Full-Stack</strong> Developer</h3>
 					<p>Bentonville, Arkansas</p>
 
-					<div id='links' style={{marginTop: '5px'}}>
+					<div id='links' style={{marginTop: '15px'}}>
 						<a href="mailto:devad50211@gmail.com" target="_blank">
 							<img src={GmailLogo} alt="Gmail logo"
 								width={linksImgSize} height={linksImgSize}/>
@@ -147,14 +147,15 @@ export default function App() {
 				
 				<div className='card' id='projects'>
 					<h1>Projects</h1>
+
 					<div id='projects-list' style={{marginTop: '10px'}}>
 						<a href="https://avinashdevineni.github.io/Chess-Site"
 						 target="_blank" style={{width: `${projectImgWidth}px`}}>
 							<Project name='Epic Chess Engine'
 							 descriptionBullets={[
-								<p><strong>React</strong> frontend</p>,
-								<p>API built w/ <strong>Spring</strong></p>,
-								<p><strong>Note:</strong> API takes a while to load</p>
+								<><strong>React</strong> frontend</>,
+								<>API built w/ <strong>Spring</strong></>,
+								<><strong>Note:</strong> API takes a while to load</>
 							 ]} imgSrc={ChessSiteImage} imgWidth={projectImgWidth}
 							 imgHeight={projectImgHeight} imgScale={1.2}
 							 skills={{
@@ -171,12 +172,48 @@ export default function App() {
 					</div>
 				</div>
 
-				<div className='card' id='XYZ'>
-					<h1>XYZ</h1>
-				</div>
+				<div className='card' id='awards'>
+					<h1>Awards</h1>
 
-				<div className='card' id='XYZ'>
-					<h1>XYZ</h1>
+					<div id='awards-list'>
+						<div>
+							<a href="https://www.congressionalappchallenge.us/" target="_blank">
+								<h2>2024 App Challenge</h2>
+							</a>
+							<p>
+								<strong>3rd place</strong> w/ &#9;
+								<a href="https://www.youtube.com/watch?v=XDXHnyvqBC0" target="_blank">
+									ParkinDetect
+								</a>
+							</p>
+							<ul>
+								<li>Created <strong>pre-processing</strong> for AI model</li>
+								<li>Developed <strong>Django</strong> backend</li>
+							</ul>
+						</div>
+
+						<div>
+							<a href="https://usaco.org/" target="_blank"><h2>USACO</h2></a>
+							<p><strong>Silver division</strong> (top 30%)</p>
+							<ul>
+								<li>
+									Learned and implemented &#9;
+									<strong>data structures</strong> (queue, stack, map, etc.)
+									and <strong>algorithms</strong> &#9; (DFS, two pointer, etc.)
+								</li>
+							</ul>
+						</div>
+
+						<div>
+							<h2>College Board</h2>
+							<p><strong>AP Scholar w/ Honor</strong></p>
+							<ul>
+								<li>
+									Scored 5/5 four times on AP exams
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 
 				<div className='card' id='XYZ'>
