@@ -118,7 +118,7 @@ export default function App() {
 							src: SpringLogo, width: skillsImgSize,
 							height: skillsImgSize
 						 }}/>
-					 ]}/>
+					 ]} dir={1}/>
 
 					<h2 style={{marginTop: '20px', marginBottom: '5px'}}>Services</h2>
 					<Carousel styles={{

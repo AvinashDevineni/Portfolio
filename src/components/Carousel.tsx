@@ -9,6 +9,7 @@ interface CarouselProps {
     carouselItems: React.ReactElement[];
 
     styles?: React.CSSProperties;
+    dir?: number;
 }
 
 export default function Carousel(props: CarouselProps) {
@@ -24,8 +25,12 @@ export default function Carousel(props: CarouselProps) {
     const carouselRef = useRef<HTMLDivElement | null>(null);
     const intervalIdRef = useRef(-1);
 
+    let dir = -1;
+    if (props.dir)
+        dir = props.dir;
+
     function move() {
-        left.current -= props.pixelsMove;
+        left.current += props.pixelsMove * dir;
         let hasRemovedChild = false;
 
         for (const element of childRefs.current) {
@@ -36,9 +41,16 @@ export default function Carousel(props: CarouselProps) {
     
             // checking if element is out of carousel
             const elementRect = element.getBoundingClientRect();
-            if (carouselRef.current && elementRect.right < carouselRef.current.getBoundingClientRect().x) {
+            let isOutOfBounds = false;
+            if (carouselRef.current) {
+                if (dir == -1)
+                    isOutOfBounds = elementRect.right < carouselRef.current.getBoundingClientRect().x;
+                else isOutOfBounds = elementRect.left > carouselRef.current.getBoundingClientRect().right;
+            }
+
+            if (isOutOfBounds) {
                 hasRemovedChild = true;
-                left.current += elementRect.width + props.childGap;
+                left.current += (elementRect.width + props.childGap) * -dir;
             }
         }
         
@@ -62,8 +74,11 @@ export default function Carousel(props: CarouselProps) {
 
     return (
         <>
-            <div ref={ref => carouselRef.current = ref}
-             className='carousel' style={{gap: props.childGap, ...props.styles}}>
+            <div ref={ref => carouselRef.current = ref} className='carousel'
+             style={{
+                gap: props.childGap, flexDirection: dir == -1 ? 'row' : 'row-reverse',
+                ...props.styles
+             }}>
                 {children}
             </div>
         </>
