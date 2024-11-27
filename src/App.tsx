@@ -1,3 +1,6 @@
+import { ReactElement, useLayoutEffect, useState } from "react";
+
+import Box from "./components/Box";
 import Carousel from "./components/Carousel";
 import LabeledText from "./components/LabeledText";
 import Project from './components/Project';
@@ -24,18 +27,92 @@ import ChessSiteImage from './public/project-imgs/chesssite.png';
 
 import './App.css';
 
+//#region Constants
+const linksImgSize = 22;
+
+const skillsImgSize = 25;
+
+const carouselLabeledTextGap = 7;
+
+const projectImgWidth = '300px';
+const projectImgHeight = '140px';
+
+const numBoxesHoriz = 25;
+const numBoxesVert = 20;
+const borderSize = 2;
+const boxSize = 200;
+//#endregion
+
 export default function App() {
-	const linksImgSize = 22;
+	const [boxes, setBoxes] = useState<ReactElement[]>([]);
 
-	const skillsImgSize = 25;
+	useLayoutEffect(() => {
+		//#region Calculating boxes' horizontal properties
+		const realBoxSize = boxSize + borderSize;
+		let realNumHorizBoxes = numBoxesHoriz;
+		let boxExtraHorizPxs: number; // extra pixels for each box
+		let leftoverHorizPxs: number; // extra pixels that need to be accounted
 
-	const carouselLabeledTextGap = 7;
+		// if placing desired num of boxes won't fit in screen
+		if (realBoxSize * numBoxesHoriz > window.innerWidth) {
+			// solving following equation: boxSize * nBoxes = windowSize
+			realNumHorizBoxes = Math.floor(window.innerWidth / realBoxSize);
 
-	const projectImgWidth = '300px';
-	const projectImgHeight = '140px';
+			// calculating leftover pixels and how to account for them
+			const screenExtraHorizPxs = window.innerWidth - realNumHorizBoxes * realBoxSize;
+			boxExtraHorizPxs = Math.floor(screenExtraHorizPxs / realNumHorizBoxes);
+			leftoverHorizPxs = screenExtraHorizPxs - boxExtraHorizPxs * realNumHorizBoxes;
+		}
+
+		// if placing desired num of boxes will fit in screen
+		else {
+			// solving following equation: boxSize * nBoxes = windowSize
+			realNumHorizBoxes = Math.floor(window.innerWidth / realBoxSize);
+			
+			// calculating leftover pixels and how to account for them
+			const screenExtraHorizPxs = window.innerWidth - realNumHorizBoxes * realBoxSize;
+			boxExtraHorizPxs = Math.floor(screenExtraHorizPxs / realNumHorizBoxes);
+			leftoverHorizPxs = screenExtraHorizPxs - boxExtraHorizPxs * realNumHorizBoxes;
+		}
+		//#endregion
+
+		// TODO: Calculate boxes' vertical properties
+
+		// TODO: Nested for loop to make full grid
+
+		//#region Constructing grid
+		let pos = 0;
+		for (let i = 0; i < realNumHorizBoxes; i++) {
+			setBoxes(boxes => {
+				let boxWidth = boxSize + boxExtraHorizPxs;
+				if (leftoverHorizPxs > 0) {
+					boxWidth++;
+					leftoverHorizPxs--;
+				}
+
+				console.log(pos);
+				
+				const res = boxes.concat(
+					<Box key={i} left={pos} top={0} idleColor={'gray'}
+					width={boxWidth} height={boxSize - borderSize}
+					borderSize={borderSize} hoverColor={'yellow'}
+					timeToHoverColor={0.25} timeToIdleColor={0.5}
+					hoverColorDelay={200}/>
+				);
+
+				pos += boxWidth + borderSize;
+				return res;
+			});
+		}
+		//#endregion
+
+		return () => setBoxes([]);
+	}, []);
 
 	return (
 		<>
+			<div id='background'>{boxes}</div>
+
 			<div id='dashboard'>
 				<div className='card' id='about'>
 					<h1>About</h1>
@@ -160,7 +237,7 @@ export default function App() {
 							 imgHeight={projectImgHeight} imgScale={1.2}
 							 skills={{
 								skillImgs: [ReactLogo, SpringLogo],
-								skillImgsSize: 25
+								skillImgsSize: 25, skillImgsSpacing: 10
 							 }}/>
 						</a>
 						

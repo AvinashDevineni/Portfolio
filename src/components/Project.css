@@ -24,7 +24,7 @@
     backdrop-filter: blur(5px);
     color: white;
 
-    transition: all 0.35s;
+    transition: all 0.45s;
 }
 
 .project-description[data-hover='true'] {
@@ -38,4 +38,10 @@
 
 .project-description > ul {
     padding-left: 30px;
+    margin-bottom: 5px;
+}
+
+.project-skills {
+    display: flex;
+    justify-content: center;
 }

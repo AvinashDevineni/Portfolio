@@ -16,8 +16,9 @@ interface ProjectProps {
 
 interface ProjectSkillsProps {
     skillImgs: string[];
-    skillImgProperties?: React.ImgHTMLAttributes<HTMLImageElement>[];
     skillImgsSize: number;
+    skillImgsSpacing: number;
+    skillImgProperties?: React.ImgHTMLAttributes<HTMLImageElement>[];
 }
 
 export default function Project(props: ProjectProps) {
@@ -51,19 +52,22 @@ export default function Project(props: ProjectProps) {
                  }}>
                     <h2>{props.name}</h2>
                     <ul>{props.descriptionBullets.map((desc, i) => <li key={i}>{desc}</li>)}</ul>
-                    {
-                        props.skills &&
-                        props.skills.skillImgs.map((src, i) => {
-                            if (props.skills?.skillImgProperties)
-                                return <img key={i} src={src}
-                                        {...props.skills?.skillImgProperties[i]}
-                                        width={props.skills.skillImgsSize}
-                                        height={props.skills.skillImgsSize}/>;
-                            
-                            return <img key={i} src={src} width={props.skills?.skillImgsSize}
-                                    height={props.skills?.skillImgsSize}/>;
-                        })
-                    }
+
+                    <div className='project-skills' style={{gap: `${props.skills?.skillImgsSpacing}px`}}>
+                        {
+                            props.skills &&
+                            props.skills.skillImgs.map((src, i) => {
+                                if (props.skills?.skillImgProperties)
+                                    return <img key={i} src={src}
+                                            {...props.skills?.skillImgProperties[i]}
+                                            width={props.skills.skillImgsSize}
+                                            height={props.skills.skillImgsSize}/>;
+                                
+                                return <img key={i} src={src} width={props.skills?.skillImgsSize}
+                                        height={props.skills?.skillImgsSize}/>;
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </>
