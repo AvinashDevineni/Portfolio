@@ -1,5 +1,6 @@
 * {
     font-family: "Noto Sans";
+    color: white;
 }
 
 html, body {
@@ -13,6 +14,7 @@ body {
 
 strong {
     font-family: 'Lexend';
+    font-style: italic;
 }
 
 #root {

@@ -11,10 +11,12 @@
 }
 
 .card {
-    padding: 5px 10px;
-
     border: 2px solid black;
     border-radius: 10px;
+
+    padding: 5px 10px;
+
+    backdrop-filter: blur(4px);
 }
 
 .card * {

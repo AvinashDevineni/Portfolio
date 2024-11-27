@@ -37,8 +37,6 @@ const carouselLabeledTextGap = 7;
 const projectImgWidth = '300px';
 const projectImgHeight = '140px';
 
-const numBoxesHoriz = 25;
-const numBoxesVert = 20;
 const borderSize = 2;
 const boxSize = 200;
 //#endregion
@@ -47,62 +45,74 @@ export default function App() {
 	const [boxes, setBoxes] = useState<ReactElement[]>([]);
 
 	useLayoutEffect(() => {
-		//#region Calculating boxes' horizontal properties
-		const realBoxSize = boxSize + borderSize;
-		let realNumHorizBoxes = numBoxesHoriz;
-		let boxExtraHorizPxs: number; // extra pixels for each box
-		let leftoverHorizPxs: number; // extra pixels that need to be accounted
+		// if (isOnTouchscreenDevice)
+		//     return;
+		
+		document.body.style.overflow = 'hidden';
 
-		// if placing desired num of boxes won't fit in screen
-		if (realBoxSize * numBoxesHoriz > window.innerWidth) {
-			// solving following equation: boxSize * nBoxes = windowSize
-			realNumHorizBoxes = Math.floor(window.innerWidth / realBoxSize);
+		const width = window.innerWidth;
+		const height = window.innerHeight;
 
-			// calculating leftover pixels and how to account for them
-			const screenExtraHorizPxs = window.innerWidth - realNumHorizBoxes * realBoxSize;
-			boxExtraHorizPxs = Math.floor(screenExtraHorizPxs / realNumHorizBoxes);
-			leftoverHorizPxs = screenExtraHorizPxs - boxExtraHorizPxs * realNumHorizBoxes;
+		const centerPos = {
+			x: Math.floor(width / 2 - boxSize / 2),
+			y: Math.floor(height / 2 - boxSize / 2)
+		};
+
+		const maxNumBoxesHoriz = Math.ceil((width - (centerPos.x + boxSize / 2)) / boxSize) + 1;
+		const maxNumBoxesVert = Math.ceil((centerPos.y - boxSize / 2) / boxSize) + 1;
+		console.log(maxNumBoxesVert);
+
+		//#region Creating grid
+		for (let x = 0; x <= maxNumBoxesHoriz; x++) {
+			for (let y = 0; y <= maxNumBoxesVert; y++) {
+				setBoxes(boxes => {
+					return boxes.concat(
+						<Box left={centerPos.x + x * boxSize} top={centerPos.y + y * boxSize}
+						 idleColor="gray" hoverColor="yellow" width={boxSize} height={boxSize}
+						 borderSize={borderSize} timeToHoverColor={0.25} timeToIdleColor={1}
+						 hoverColorDelay={100}/>
+					);
+				});
+			}
 		}
 
-		// if placing desired num of boxes will fit in screen
-		else {
-			// solving following equation: boxSize * nBoxes = windowSize
-			realNumHorizBoxes = Math.floor(window.innerWidth / realBoxSize);
-			
-			// calculating leftover pixels and how to account for them
-			const screenExtraHorizPxs = window.innerWidth - realNumHorizBoxes * realBoxSize;
-			boxExtraHorizPxs = Math.floor(screenExtraHorizPxs / realNumHorizBoxes);
-			leftoverHorizPxs = screenExtraHorizPxs - boxExtraHorizPxs * realNumHorizBoxes;
+		for (let x = 1; x <= maxNumBoxesHoriz; x++) {
+			for (let y = 0; y <= maxNumBoxesVert; y++) {
+				setBoxes(boxes => {
+					return boxes.concat(
+						<Box left={centerPos.x - x * boxSize} top={centerPos.y + y * boxSize}
+						 idleColor="gray" hoverColor="yellow" width={boxSize} height={boxSize}
+						 borderSize={borderSize} timeToHoverColor={0.25} timeToIdleColor={1}
+						 hoverColorDelay={100}/>
+					);
+				});
+			}
 		}
-		//#endregion
 
-		// TODO: Calculate boxes' vertical properties
+		for (let x = 0; x <= maxNumBoxesHoriz; x++) {
+			for (let y = 1; y <= maxNumBoxesVert; y++) {
+				setBoxes(boxes => {
+					return boxes.concat(
+						<Box left={centerPos.x + x * boxSize} top={centerPos.y - y * boxSize}
+						 idleColor="gray" hoverColor="yellow" width={boxSize} height={boxSize}
+						 borderSize={borderSize} timeToHoverColor={0.25} timeToIdleColor={1}
+						 hoverColorDelay={100}/>
+					);
+				});
+			}
+		}
 
-		// TODO: Nested for loop to make full grid
-
-		//#region Constructing grid
-		let pos = 0;
-		for (let i = 0; i < realNumHorizBoxes; i++) {
-			setBoxes(boxes => {
-				let boxWidth = boxSize + boxExtraHorizPxs;
-				if (leftoverHorizPxs > 0) {
-					boxWidth++;
-					leftoverHorizPxs--;
-				}
-
-				console.log(pos);
-				
-				const res = boxes.concat(
-					<Box key={i} left={pos} top={0} idleColor={'gray'}
-					width={boxWidth} height={boxSize - borderSize}
-					borderSize={borderSize} hoverColor={'yellow'}
-					timeToHoverColor={0.25} timeToIdleColor={0.5}
-					hoverColorDelay={200}/>
-				);
-
-				pos += boxWidth + borderSize;
-				return res;
-			});
+		for (let x = 1; x <= maxNumBoxesHoriz; x++) {
+			for (let y = 1; y <= maxNumBoxesVert; y++) {
+				setBoxes(boxes => {
+					return boxes.concat(
+						<Box left={centerPos.x - x * boxSize} top={centerPos.y - y * boxSize}
+						 idleColor="gray" hoverColor="yellow" width={boxSize} height={boxSize}
+						 borderSize={borderSize} timeToHoverColor={0.25} timeToIdleColor={1}
+						 hoverColorDelay={100}/>
+					);
+				});
+			}
 		}
 		//#endregion
 
