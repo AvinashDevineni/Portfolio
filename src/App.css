@@ -8,6 +8,16 @@
     z-index: 1;
 
     height: calc(100% - 20px);
+
+    pointer-events: none;
+}
+
+#dashboard a, #dashboard button {
+    pointer-events: all;
+}
+
+#dashboard a {
+    display: inline-block;
 }
 
 .card {

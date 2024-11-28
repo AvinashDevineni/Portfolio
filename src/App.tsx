@@ -136,7 +136,7 @@ export default function App() {
 								width={linksImgSize} height={linksImgSize}/>
 						</a>
 						<a href="https://github.com/AvinashDevineni" target="_blank">
-							<img src={GithubDarkLogo} alt="Github logo"
+							<img src={GithubLightLogo} alt="Github logo"
 								width={linksImgSize} height={linksImgSize}/>
 						</a>
 						<a href="https://linkedin.com/in/avinash-devineni" target="_blank">
@@ -221,7 +221,7 @@ export default function App() {
 						 }}/>,
 						<LabeledText text="GitHub" gap={carouselLabeledTextGap}
 						 labelAttributes={{
-							src: GithubDarkLogo, width: skillsImgSize,
+							src: GithubLightLogo, width: skillsImgSize,
 							height: skillsImgSize
 						 }}/>,
 						 <LabeledText text="AWS" gap={carouselLabeledTextGap}
