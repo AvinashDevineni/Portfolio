@@ -216,12 +216,36 @@ export default function App() {
 					</div>
 				</div>
 
-				<div className='card' id='XYZ'>
-					<h1>XYZ</h1>
-				</div>
+				<div className='card' id='education'>
+					<h1>Education</h1>
 
-				<div className='card' id='XYZ'>
-					<h1>XYZ</h1>
+					<div id='education-list'>
+						<div>
+							<h2>Bentonville High School</h2>
+							<ul>
+								<li>
+									Unweighted & Weighted <strong>GPA</strong>: 3.93, 4.21
+								</li>
+								<li>
+									<strong>Relevant courses</strong>: AP CSP; Programming II; AP CSA;
+									&#9; AP Physics 1; AP Calculus AB & BC
+								</li>
+							</ul>
+						</div>
+
+						<div>
+							<h2>NWACC</h2>
+							<ul>
+								<li>
+									<strong>GPA</strong>: 4.0
+								</li>
+								<li>
+									<strong>Relevant courses</strong>: Intro to Information Systems;
+									&#9; Microcomputer Hardware Support
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</>
