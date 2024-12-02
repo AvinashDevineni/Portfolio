@@ -4,21 +4,17 @@
 
 html, body {
     height: 100%;
-    overflow: hidden;
-}
-
-body {
-    margin: 10px;
+    margin: 0px;
 }
 
 strong {
     font-family: 'Lexend';
 }
 
-#root {
-    height: 100%;
-}
-
 h1, h2, h3 {
     font-weight: normal;
+}
+
+#root {
+    height: 100%;
 }
