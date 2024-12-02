@@ -27,10 +27,6 @@
     transition: top 0.35s;
 }
 
-.project-description[data-hover='true'] {
-    top: 0px;
-}
-
 .project-description a {
     color: hsl(198, 97%, 53%);
 }
@@ -46,4 +42,17 @@
 
 .project-description > ul {
     padding-left: 30px;
+}
+
+.project-skills {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 6px !important;
+}
+
+.project-description[data-hover='true'] {
+    top: 0px;
 }

@@ -41,6 +41,10 @@
     #awards, #education {
         grid-row: 4 / 6;
     }
+
+    #education-list {
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 689px) {
@@ -62,6 +66,10 @@
 
     #education {
         grid-row: 8 / 10;
+    }
+
+    #education-list {
+        flex-direction: column;
     }
 }
 

@@ -16,23 +16,30 @@ import JavaScriptLogo from './public/skill-logos/javascript.png';
 import NodeLogo from './public/skill-logos/nodejs.png';
 import DjangoLogo from './public/skill-logos/django.png';
 import SpringLogo from './public/skill-logos/spring.png';
+import ExpressLightLogo from './public/skill-logos/expressjs-light.png';
+import ExpressDarkLogo from './public/skill-logos/expressjs-dark.png';
+import MongoLightLogo from './public/skill-logos/mongodb-light.png';
+import MongoDarkLogo from './public/skill-logos/mongodb-dark.png';
 
 import GitLogo from './public/skill-logos/git.png';
 import AwsLogo from './public/skill-logos/aws.png';
 
 import ChessSiteImage from './public/project-imgs/chesssite.png';
+import ChatSocketImage from './public/project-imgs/chatsocket.png';
 
 import './App.css';
 
+const linksImgSize = 22;
+
+const skillsImgSize = 25;
+
+const carouselLabeledTextGap = 7;
+
+const projectImgWidth = '300px';
+const projectImgHeight = '140px';
+const projectImgScale = 1.2;
+
 export default function App() {
-	const linksImgSize = 22;
-
-	const skillsImgSize = 25;
-
-	const carouselLabeledTextGap = 7;
-
-	const projectImgWidth = '300px';
-	const projectImgHeight = '140px';
 
 	return (
 		<>
@@ -49,7 +56,7 @@ export default function App() {
 								width={linksImgSize} height={linksImgSize}/>
 						</a>
 						<a href="https://github.com/AvinashDevineni" target="_blank">
-							<img src={GithubDarkLogo} alt="Github logo"
+							<img src={GithubLightLogo} alt="Github logo"
 								width={linksImgSize} height={linksImgSize}/>
 						</a>
 						<a href="https://linkedin.com/in/avinash-devineni" target="_blank">
@@ -108,19 +115,30 @@ export default function App() {
 							src: NodeLogo, width: skillsImgSize,
 							height: skillsImgSize
 						 }}/>,
+						 <LabeledText text="Spring" gap={carouselLabeledTextGap}
+						 labelAttributes={{
+							src: SpringLogo, width: skillsImgSize,
+							height: skillsImgSize
+						 }}/>,
 						<LabeledText text="Django" gap={carouselLabeledTextGap}
 						 labelAttributes={{
 							src: DjangoLogo, width: skillsImgSize,
 							height: skillsImgSize
 						 }}/>,
-						 <LabeledText text="Spring" gap={carouselLabeledTextGap}
+						 <LabeledText text="ExpressJS" gap={carouselLabeledTextGap}
 						 labelAttributes={{
-							src: SpringLogo, width: skillsImgSize,
+							src: ExpressLightLogo, width: skillsImgSize,
+							height: skillsImgSize
+						 }}/>,
+						 <LabeledText text="MongoDB" gap={carouselLabeledTextGap}
+						 labelAttributes={{
+							// dividing width by 2 to maintain aspect ratio
+							src: MongoLightLogo, width: skillsImgSize / 2,
 							height: skillsImgSize
 						 }}/>
 					 ]} dir={1}/>
 
-					<h2 style={{marginTop: '20px', marginBottom: '5px'}}>Services</h2>
+					<h2 style={{marginTop: '20px', marginBottom: '5px'}}>Etc.</h2>
 					<Carousel styles={{
 						fontSize: '20px', border: 'black 2px solid',
 						borderRadius: '10px', padding: '5px 0px',
@@ -134,7 +152,7 @@ export default function App() {
 						 }}/>,
 						<LabeledText text="GitHub" gap={carouselLabeledTextGap}
 						 labelAttributes={{
-							src: GithubDarkLogo, width: skillsImgSize,
+							src: GithubLightLogo, width: skillsImgSize,
 							height: skillsImgSize
 						 }}/>,
 						 <LabeledText text="AWS" gap={carouselLabeledTextGap}
@@ -156,18 +174,27 @@ export default function App() {
 							<>API built w/ <strong>Spring</strong></>,
 							<><strong>Note:</strong> API takes a while to load</>
 						 ]} imgSrc={ChessSiteImage} imgWidth={projectImgWidth}
-						 imgHeight={projectImgHeight} imgScale={1.2}
+						 imgHeight={projectImgHeight} imgScale={projectImgScale}
 						 skills={{
 							skillImgs: [ReactLogo, SpringLogo],
 							skillImgsSize: 25
 						 }}/>
 						
-						<Project name='Epic Chess Engine'
-						 link='abc.com'
+						<Project name='ChatSocket'
 						 descriptionBullets={[
-							'', '', ''
-						 ]} imgSrc={ChessSiteImage} imgWidth={projectImgWidth}
-						 imgHeight={projectImgHeight}/>
+							<>Frontend built w/ <strong>React</strong></>,
+							<><strong>Express.js</strong> API for <strong>WebSockets</strong></>,
+							<><strong>MongoDB</strong> for rooms & messages</>
+						 ]} imgSrc={ChatSocketImage} imgWidth={projectImgWidth}
+						 imgHeight={projectImgHeight} imgScale={projectImgScale}
+						 skills={{
+							skillImgs: [ReactLogo, MongoDarkLogo, ExpressDarkLogo],
+							// dividing by 2 to maintain aspect ratio
+							skillImgsSize: [{width: skillsImgSize, height: skillsImgSize}, {
+								width: skillsImgSize / 2,
+								height: skillsImgSize
+							}, {width: skillsImgSize, height: skillsImgSize}]
+						 }}/>
 					</div>
 				</div>
 

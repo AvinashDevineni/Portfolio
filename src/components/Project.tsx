@@ -5,7 +5,7 @@ import './Project.css';
 interface ProjectProps {
     name: string;
     descriptionBullets: ReactNode[];
-    link: string;
+    link?: string;
 
     imgSrc: string;
     imgWidth: string;
@@ -17,8 +17,13 @@ interface ProjectProps {
 
 interface ProjectSkillsProps {
     skillImgs: string[];
+    skillImgsSize: number | Size[];
     skillImgProperties?: React.ImgHTMLAttributes<HTMLImageElement>[];
-    skillImgsSize: number;
+}
+
+interface Size {
+    width: number;
+    height: number;
 }
 
 export default function Project(props: ProjectProps) {
@@ -50,22 +55,55 @@ export default function Project(props: ProjectProps) {
                     if (ref)
                         ref.dataset.hover = 'false';
                  }}>
-                    <a className='project-name' href={props.link} target='_blank'>
+                    {
+                        props.link ?
+                        <a className='project-name' href={props.link} target='_blank'>
+                            <h2>{props.name}</h2>
+                        </a> :
                         <h2>{props.name}</h2>
-                    </a>
+                    }
+                    
                     <ul>{props.descriptionBullets.map((desc, i) => <li key={i}>{desc}</li>)}</ul>
                     {
                         props.skills &&
-                        props.skills.skillImgs.map((src, i) => {
-                            if (props.skills?.skillImgProperties)
-                                return <img key={i} src={src}
-                                        {...props.skills?.skillImgProperties[i]}
-                                        width={props.skills.skillImgsSize}
-                                        height={props.skills.skillImgsSize}/>;
-                            
-                            return <img key={i} src={src} width={props.skills?.skillImgsSize}
-                                    height={props.skills?.skillImgsSize}/>;
-                        })
+                        <div className='project-skills'>
+                            {props.skills.skillImgs.map((src, i) => {
+                                if (props.skills?.skillImgProperties) {
+                                    if (typeof props.skills.skillImgsSize === 'object')
+                                        return (
+                                            <img key={i} src={src}
+                                             {...props.skills?.skillImgProperties[i]}
+                                             width={props.skills.skillImgsSize[i].width}
+                                             height={props.skills.skillImgsSize[i].height}/>
+                                        );
+                                    
+                                    else return (
+                                        <img key={i} src={src}
+                                         {...props.skills?.skillImgProperties[i]}
+                                         width={props.skills.skillImgsSize}
+                                         height={props.skills.skillImgsSize}/>
+                                    );
+                                }
+
+                                // this should never happen due to
+                                // conditional rendering, but TS giving error
+                                if (!props.skills)
+                                    return;
+                                
+                                if (typeof props.skills.skillImgsSize === 'object')
+                                    return (
+                                        <img key={i} src={src}
+                                         width={props.skills.skillImgsSize[i].width}
+                                         height={props.skills.skillImgsSize[i].height}/>
+                                    );
+                                
+                                else return (
+                                    <img key={i} src={src}
+                                     width={props.skills.skillImgsSize}
+                                     height={props.skills.skillImgsSize}/>
+                                );
+                            })}
+                        </div>
                     }
                 </div>
             </div>
