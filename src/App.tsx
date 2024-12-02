@@ -149,26 +149,25 @@ export default function App() {
 					<h1>Projects</h1>
 
 					<div id='projects-list' style={{marginTop: '10px'}}>
-						<a href="https://avinashdevineni.github.io/Chess-Site"
-						 target="_blank" style={{width: `${projectImgWidth}px`}}>
-							<Project name='Epic Chess Engine'
-							 descriptionBullets={[
-								<><strong>React</strong> frontend</>,
-								<>API built w/ <strong>Spring</strong></>,
-								<><strong>Note:</strong> API takes a while to load</>
-							 ]} imgSrc={ChessSiteImage} imgWidth={projectImgWidth}
-							 imgHeight={projectImgHeight} imgScale={1.2}
-							 skills={{
-								skillImgs: [ReactLogo, SpringLogo],
-								skillImgsSize: 25
-							 }}/>
-						</a>
+						<Project name='Epic Chess Engine'
+						 link='https://avinashdevineni.github.io/Chess-Site'
+						 descriptionBullets={[
+							<><strong>React</strong> frontend</>,
+							<>API built w/ <strong>Spring</strong></>,
+							<><strong>Note:</strong> API takes a while to load</>
+						 ]} imgSrc={ChessSiteImage} imgWidth={projectImgWidth}
+						 imgHeight={projectImgHeight} imgScale={1.2}
+						 skills={{
+							skillImgs: [ReactLogo, SpringLogo],
+							skillImgsSize: 25
+						 }}/>
 						
 						<Project name='Epic Chess Engine'
-						descriptionBullets={[
+						 link='abc.com'
+						 descriptionBullets={[
 							'', '', ''
-						]} imgSrc={ChessSiteImage} imgWidth={projectImgWidth}
-						imgHeight={projectImgHeight}/>
+						 ]} imgSrc={ChessSiteImage} imgWidth={projectImgWidth}
+						 imgHeight={projectImgHeight}/>
 					</div>
 				</div>
 

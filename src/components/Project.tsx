@@ -5,6 +5,7 @@ import './Project.css';
 interface ProjectProps {
     name: string;
     descriptionBullets: ReactNode[];
+    link: string;
 
     imgSrc: string;
     imgWidth: string;
@@ -49,7 +50,9 @@ export default function Project(props: ProjectProps) {
                     if (ref)
                         ref.dataset.hover = 'false';
                  }}>
-                    <h2>{props.name}</h2>
+                    <a className='project-name' href={props.link} target='_blank'>
+                        <h2>{props.name}</h2>
+                    </a>
                     <ul>{props.descriptionBullets.map((desc, i) => <li key={i}>{desc}</li>)}</ul>
                     {
                         props.skills &&

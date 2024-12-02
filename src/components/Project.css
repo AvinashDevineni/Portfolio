@@ -24,14 +24,22 @@
     backdrop-filter: blur(5px);
     color: white;
 
-    transition: all 0.35s;
+    transition: top 0.35s;
 }
 
 .project-description[data-hover='true'] {
     top: 0px;
 }
 
-.project-description > h2 {
+.project-description a {
+    color: hsl(198, 97%, 53%);
+}
+
+.project-description a:visited {
+    color: hsl(231, 75%, 70%);
+}
+
+.project-description h2 {
     margin-top: 5px;
     margin-left: 5px;
 }
