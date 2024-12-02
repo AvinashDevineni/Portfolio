@@ -4,7 +4,7 @@ import Project from './components/Project';
 
 import GmailLogo from './public/links-logos/gmail.png';
 import GithubLightLogo from './public/links-logos/github-light.png';
-import GithubDarkLogo from './public/links-logos/github-dark.png';
+//import GithubDarkLogo from './public/links-logos/github-dark.png';
 import LinkedInLogo from './public/links-logos/linkedin.png';
 
 import ReactLogo from './public/skill-logos/react.png';
